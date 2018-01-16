@@ -1,10 +1,7 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
-import _ from 'lodash';
-//import { Provider } from 'react-redux';
-//import { createStore, applyMiddleware } from 'redux';
-//import reducers from './reducers';
 import VideoList from './components/video_list';
 import SearchBar from './components/search_bar';
 import VideoDetail from './components/video_detail';
