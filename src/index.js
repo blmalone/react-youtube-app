@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
+import _ from 'lodash';
 //import { Provider } from 'react-redux';
 //import { createStore, applyMiddleware } from 'redux';
 //import reducers from './reducers';
@@ -32,11 +33,14 @@ class App extends Component {
 	}
 
 	render () {
+		//Here we are throttling our video search requests
+		const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 300);
+
 		//passing data like this is referred to as passing props
 		//We are using a callback technique with VideoList
 		return (
 			<div>
-				<SearchBar onSearchTermChange = {term => this.videoSearch(term)} />
+				<SearchBar onSearchTermChange = {videoSearch} />
 				<VideoDetail video = {this.state.selectedVideo} />
 				<VideoList 
 					onVideoSelect = {selectedVideo => this.setState({selectedVideo})}
